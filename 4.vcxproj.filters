@@ -27,6 +27,9 @@
     <ClCompile Include="balony.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
+    <ClCompile Include="bullet.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="monkey.h">
@@ -36,6 +39,9 @@
       <Filter>Pliki źródłowe</Filter>
     </ClInclude>
     <ClInclude Include="balony.h">
+      <Filter>Pliki źródłowe</Filter>
+    </ClInclude>
+    <ClInclude Include="bullet.h">
       <Filter>Pliki źródłowe</Filter>
     </ClInclude>
   </ItemGroup>

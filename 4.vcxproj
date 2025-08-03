@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -156,12 +156,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="balony.cpp" />
+    <ClCompile Include="bullet.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="monkey.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="balony.h" />
+    <ClInclude Include="bullet.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="monkey.h" />
   </ItemGroup>
