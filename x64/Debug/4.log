@@ -1,14 +1,4 @@
 ﻿  main.cpp
-D:\Programy\Bloons\4\monkey.h(31,25): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-D:\Programy\Bloons\4\monkey.h(31,22): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-D:\Programy\Bloons\4\bullet.h(52,24): warning C4244: "=": konwersja z "T" do "int", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
-D:\Programy\Bloons\4\bullet.h(53,24): warning C4244: "=": konwersja z "T" do "int", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
+D:\Programy\Bloons\4\monkey.h(21,105): warning C4244: "inicjowanie": konwersja z "int" do "float", możliwa utrata danych
+D:\Programy\Bloons\4\game.h(41,103): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
   4.vcxproj -> D:\Programy\Bloons\x64\Debug\4.exe

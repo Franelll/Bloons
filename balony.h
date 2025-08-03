@@ -31,6 +31,7 @@ public:
         x += speedX;
         y += speedY;
         sprite.setPosition(static_cast<float>(x), static_cast<float>(y));
+		Sleep(30); // Sleep to slow down the update for visibility
 
 		if (y > 300) {
 			speedY = 0;
@@ -38,11 +39,7 @@ public:
 
             // Stop moving down if it goes below a certain point
 		}
-        if (x > 800) {
-            speedY = -5;
-            speedX = 0; // Change direction if it goes too far right
-
-        }
+  
 
 
 
@@ -56,6 +53,10 @@ public:
     void setDirection(int newSpeedX, int newSpeedY) {
         speedX = newSpeedX;
         speedY = newSpeedY;
+    }
+
+    sf::Vector2f getPosition() const {
+        return sprite.getPosition();
     }
 
     sf::FloatRect getBounds() const {

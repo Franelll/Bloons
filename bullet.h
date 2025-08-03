@@ -8,53 +8,56 @@ class Bullet {
 private:
     sf::Sprite sprite;
     sf::Texture texture;
-    int damage;
-    int speedX;
-    int speedY;
-    int size;
+    float speedX;
+    float speedY;
     float x;
     float y;
-	float targetX;
-	float targetY;
-	float startX;
-	float startY;
+    int size;
+
 
 public:
-	Bullet(int damage, float startX, float startY, float targetX, float targetY, int size)
-		: damage(damage), startX(startX), startY(startY), targetX(targetX), targetY(targetY), size(size), x(startX), y(startY){
-
+    Bullet(int damage, float startX, float startY, float targetX, float targetY, int size)
+        : x(startX), y(startY), size(size) {
         sf::Image image;
         image.create(size, size, sf::Color::Transparent);
 
         int radius = size / 2;
         int center = radius;
 
-        for (int j = 0; j < size; ++j)
-        {
-            for (int i = 0; i < size; ++i)
-            {
+        for (int j = 0; j < size; ++j) {
+            for (int i = 0; i < size; ++i) {
                 int dx = i - center;
                 int dy = j - center;
-                if (dx * dx + dy * dy <= radius * radius)
-                {
+                if (dx * dx + dy * dy <= radius * radius) {
                     image.setPixel(i, j, sf::Color::Yellow);
                 }
             }
         }
 
-        sf::Vector2f dir(targetX - startX, targetY - startY);
-        float length = std::sqrt(dir.x * dir.x + dir.y * dir.y);
-        if (length != 0.f) {
-            dir /= length;
-        }
-
-        float speed = 5.f;
-        speedX = dir.x * speed;
-        speedY = dir.y * speed;
-        
         texture.loadFromImage(image);
         sprite.setTexture(texture);
-        sprite.setPosition(static_cast<float>(x), static_cast<float>(y));
+        sprite.setPosition(x, y);
+
+        float dx = targetX - startX;
+        float dy = targetY - startY;
+        float distance = std::sqrt(dx * dx + dy * dy);
+        float speed = 50.f;
+
+        if (distance != 0) {
+            speedX = (dx / distance) * speed;
+            speedY = (dy / distance) * speed;
+        }
+        else {
+            speedX = 0;
+            speedY = 0;
+        }
+    }
+
+    static bool shouldShoot(float startX, float startY, float targetX, float targetY, float range) {
+        float dx = targetX - startX;
+        float dy = targetY - startY;
+        float distance = std::sqrt(dx * dx + dy * dy);
+        return distance <= range;
     }
 
     Bullet(const Bullet&) = delete;
@@ -64,13 +67,19 @@ public:
     Bullet& operator=(Bullet&&) = default;
 
     void update() {
-        sprite.move(static_cast<float>(speedX), static_cast<float>(speedY));
         x += speedX;
         y += speedY;
-        Sleep(100); // NIE u¿ywaj w grze!
+        sprite.setPosition(x, y);
     }
 
     void render(sf::RenderWindow& window) {
         window.draw(sprite);
     }
+    sf::FloatRect getBounds() const {
+        return sprite.getGlobalBounds();
+    }
+
+
+
+
 };
